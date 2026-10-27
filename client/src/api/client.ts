@@ -1,4 +1,4 @@
-const API_BASE = '/api';
+const API_BASE = (import.meta as any).env?.VITE_API_URL || '/api';
 
 export class ApiError extends Error {
   status: number;
@@ -24,10 +24,16 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
     headers.set('Content-Type', 'application/json');
   }
 
-  const response = await fetch(`${API_BASE}${endpoint}`, {
-    ...options,
-    headers,
-  });
+  const url = `${API_BASE}${endpoint}`;
+  let response: Response;
+  try {
+    response = await fetch(url, {
+      ...options,
+      headers,
+    });
+  } catch (netErr: any) {
+    throw new ApiError(`Network error connecting to backend API (${url}): ${netErr.message}`, 0);
+  }
 
   if (response.status === 401) {
     // Unauthorized - token expired or invalid
@@ -39,16 +45,21 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
   }
 
   // Handle CSV attachment downloads
-  const contentType = response.headers.get('content-type');
-  if (contentType && contentType.includes('text/csv')) {
+  const contentType = response.headers.get('content-type') || '';
+  if (contentType.includes('text/csv')) {
     const text = await response.text();
     return text as unknown as T;
+  }
+
+  // Detect HTML fallback (e.g. Vercel returning index.html for 404s)
+  if (contentType.includes('text/html')) {
+    throw new ApiError(`Backend API not found at ${url} (HTTP ${response.status}). If deployed on Vercel, ensure the backend API is deployed or configure VITE_API_URL.`, response.status);
   }
 
   const data = await response.json().catch(() => ({}));
 
   if (!response.ok) {
-    throw new ApiError(data.message || data.error || 'API Request failed', response.status, data);
+    throw new ApiError(data.message || data.error || `HTTP ${response.status}: API request failed`, response.status, data);
   }
 
   return data as T;
