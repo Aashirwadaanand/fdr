@@ -1,0 +1,24 @@
+{
+  "name": "fdr-sentinel",
+  "version": "1.0.0",
+  "description": "FDR-Sentinel: Security Deposit / FDR Management Portal for AICTE Regulation Bureau",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm --prefix server install && npm --prefix client install",
+    "install:all": "npm --prefix server install && npm --prefix client install",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "dev": "npm --prefix server run dev",
+    "build:client": "npm --prefix client run build",
+    "build:server": "npm --prefix server run build",
+    "build": "npm --prefix client run build && npm --prefix server run build",
+    "start": "npm --prefix server run start",
+    "test": "npm --prefix server run test",
+    "seed": "npm --prefix server run seed",
+    "benchmark": "npm --prefix server run benchmark",
+    "verify": "npm --prefix server run verify"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

@@ -1,0 +1,9 @@
+node_modules/
+dist/
+fdr_sentinel.db
+fdr_sentinel.db-shm
+fdr_sentinel.db-wal
+uploads/
+.env
+*.log
+.DS_Store

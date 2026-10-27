@@ -1,0 +1,23 @@
+services:
+  fdr-sentinel:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fdr-sentinel-app
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - NODE_ENV=production
+      - JWT_SECRET=aicte-fdr-sentinel-docker-secret-key-production-demo
+      - DB_PATH=/app/data/fdr_sentinel.db
+      - UPLOAD_DIR=/app/uploads
+      - ENABLE_DEMO_CLOCK=true
+    volumes:
+      - fdr-data:/app/data
+      - fdr-uploads:/app/uploads
+    restart: unless-stopped
+
+volumes:
+  fdr-data:
+  fdr-uploads:
