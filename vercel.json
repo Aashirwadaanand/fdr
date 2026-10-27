@@ -4,7 +4,7 @@
     "server": {
       "root": "server",
       "framework": "express",
-      "entrypoint": "src/index.ts"
+      "entrypoint": "dist/index.js"
     },
     "client": {
       "root": "client",

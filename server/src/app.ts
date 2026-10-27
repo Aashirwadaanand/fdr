@@ -50,7 +50,7 @@ export function createApp(): Express {
   app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(openApiSpec));
 
   // API Health Check
-  app.get('/api/health', (_req: Request, res: Response) => {
+  const healthHandler = (_req: Request, res: Response) => {
     res.json({
       status: 'UP',
       portal: 'AICTE FDR-Sentinel',
@@ -58,22 +58,31 @@ export function createApp(): Express {
       clock: clock.getStatus(),
       simulation_notice: 'Synthetic data & simulated bank verification active.',
     });
-  });
+  };
+  app.get('/api/health', healthHandler);
+  app.get('/health', healthHandler);
 
-  // Mount routes
-  app.use('/api/auth', authRoutes);
-  app.use('/api/clock', clockRoutes);
-  app.use('/api/audit', auditRoutes);
-  app.use('/api/fdrs', fdrRoutes);
-  app.use('/api/verification', verificationRoutes);
-  app.use('/api/rules', ruleRoutes);
-  app.use('/api/notifications', notificationRoutes);
-  app.use('/api/escalations', escalationRoutes);
-  app.use('/api/release', releaseRoutes);
-  app.use('/api/dashboard', dashboardRoutes);
-  app.use('/api/reports', reportRoutes);
-  app.use('/api/benchmark', benchmarkRoutes);
-  app.use('/api/import', importRoutes);
+  // Mount routes on both /api/* and /* (handles both local standalone Express and Vercel stripped rewrites)
+  const routeConfigs = [
+    { path: '/auth', router: authRoutes },
+    { path: '/clock', router: clockRoutes },
+    { path: '/audit', router: auditRoutes },
+    { path: '/fdrs', router: fdrRoutes },
+    { path: '/verification', router: verificationRoutes },
+    { path: '/rules', router: ruleRoutes },
+    { path: '/notifications', router: notificationRoutes },
+    { path: '/escalations', router: escalationRoutes },
+    { path: '/release', router: releaseRoutes },
+    { path: '/dashboard', router: dashboardRoutes },
+    { path: '/reports', router: reportRoutes },
+    { path: '/benchmark', router: benchmarkRoutes },
+    { path: '/import', router: importRoutes },
+  ];
+
+  for (const { path: routePath, router } of routeConfigs) {
+    app.use(`/api${routePath}`, router);
+    app.use(routePath, router);
+  }
 
   // Serve client static files if built
   const possiblePaths = [
