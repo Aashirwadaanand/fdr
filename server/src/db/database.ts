@@ -13,7 +13,10 @@ export function getDatabase(config?: DBConfig): DatabaseSync {
     return dbInstance;
   }
 
-  const dbFile = config?.dbPath || process.env.DATABASE_PATH || path.join(__dirname, '../../../fdr_sentinel.db');
+  const defaultPath = (process.env.VERCEL || process.env.NOW_REGION)
+    ? path.join('/tmp', 'fdr_sentinel.db')
+    : path.join(__dirname, '../../../fdr_sentinel.db');
+  const dbFile = config?.dbPath || process.env.DATABASE_PATH || defaultPath;
   const dbDir = path.dirname(dbFile);
   if (!fs.existsSync(dbDir)) {
     fs.mkdirSync(dbDir, { recursive: true });

@@ -1,18 +1,28 @@
 {
-  "version": 2,
-  "buildCommand": "npm run build",
-  "outputDirectory": "server/public",
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "server": {
+      "root": "server",
+      "framework": "express",
+      "entrypoint": "src/index.ts"
+    },
+    "client": {
+      "root": "client",
+      "framework": "vite"
+    }
+  },
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/api/index.ts"
+      "destination": {
+        "service": "server"
+      }
     },
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": {
+        "service": "client"
+      }
     }
-  ],
-  "env": {
-    "NODE_OPTIONS": "--experimental-sqlite"
-  }
+  ]
 }
