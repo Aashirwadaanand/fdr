@@ -68,9 +68,6 @@ export const Login: React.FC = () => {
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 800, color: '#0A2540', margin: 0 }}>
             AICTE FDR-Sentinel
           </h1>
-          <p style={{ fontSize: '0.85rem', color: 'var(--slate-500)', marginTop: 4 }}>
-            Security Deposit & FDR Management Portal • Regulation Bureau
-          </p>
         </div>
 
         {/* Form */}
