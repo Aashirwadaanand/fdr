@@ -1,6 +1,5 @@
 # FDR-Sentinel: AICTE Security Deposit & FDR Management Portal
 
-[![SIH 2026 Problem Statement SIH26265](https://img.shields.io/badge/SIH%202026-Problem%20SIH26265-0A2540.svg)](https://www.sih.gov.in)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D24.0.0-339933.svg)](https://nodejs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6.svg)](https://www.typescriptlang.org)
 [![React](https://img.shields.io/badge/React-19.0-61DAFB.svg)](https://react.dev)
@@ -16,7 +15,7 @@
 
 ## 📌 Executive Summary
 
-**FDR-Sentinel** is an enterprise-grade regulatory portal engineered for the **AICTE Regulation Bureau (Smart India Hackathon 2026, Problem Statement SIH26265)**. It provides end-to-end governance over Fixed Deposit Receipts (FDRs) pledged as security deposits by technical and higher educational institutions across India.
+**FDR-Sentinel** is an enterprise-grade regulatory portal engineered for the **AICTE Regulation Bureau**. It provides end-to-end governance over Fixed Deposit Receipts (FDRs) pledged as security deposits by technical and higher educational institutions across India.
 
 The portal enforces a rigorous compliance pipeline: automated OCR certificate intake, an 8-rule compliance engine, a 3-tier trust hierarchy, simulated Core Banking API verification, automated validity tracking with a time-travel demo clock, maker-checker release authorization, and a cryptographically hash-chained, tamper-evident audit trail with SQLite triggers preventing unauthorized modification.
 
@@ -257,5 +256,5 @@ docker run -d -p 5000:5000 --name fdr-sentinel -v fdr-data:/app/data fdr-sentine
 
 ## 📄 License & Attribution
 
-Developed for the **All India Council for Technical Education (AICTE)** under the **Smart India Hackathon 2026 (Problem Statement SIH26265)**.
+Developed for the **All India Council for Technical Education (AICTE)** Regulation Bureau.
 All financial institutions, certificates, registration numbers, and applicant names are purely synthetic.

@@ -179,7 +179,7 @@ Interest Rate: 7.25% p.a.`);
             color: '#0369A1',
             marginBottom: 14
           }}>
-            ℹ️ <strong>Simulated Extraction:</strong> In compliance with SIH guidelines, text parsing operates behind a pluggable interface simulating production OCR engines.
+            ℹ️ <strong>Simulated Extraction:</strong> Text parsing operates behind a pluggable interface simulating production OCR engines.
           </div>
 
           {inputMode === 'file' ? (

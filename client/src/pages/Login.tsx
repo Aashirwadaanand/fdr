@@ -69,7 +69,7 @@ export const Login: React.FC = () => {
             AICTE FDR-Sentinel
           </h1>
           <p style={{ fontSize: '0.85rem', color: 'var(--slate-500)', marginTop: 4 }}>
-            Security Deposit / FDR Management Portal • Regulation Bureau (SIH26265)
+            Security Deposit & FDR Management Portal • Regulation Bureau
           </p>
         </div>
 

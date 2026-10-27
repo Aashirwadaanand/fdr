@@ -28,10 +28,10 @@ export const DemoBanner: React.FC<DemoBannerProps> = ({ onNavigateToGuide }) => 
   return (
     <div className="prototype-banner">
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <span className="pill">AICTE Prototype</span>
+        <span className="pill">AICTE Sentinel</span>
         <span style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#F1F5F9' }}>
           <Shield size={14} style={{ color: 'var(--accent-gold)' }} />
-          <strong>SIH26265 Synthetic Environment:</strong> Fictional banks, synthetic certificates, and simulated Core Banking verification.
+          <strong>Regulatory Testing Environment:</strong> Fictional banks, synthetic certificates, and simulated Core Banking verification.
         </span>
       </div>
 
@@ -51,7 +51,7 @@ export const DemoBanner: React.FC<DemoBannerProps> = ({ onNavigateToGuide }) => 
           }}
         >
           <BookOpen size={13} />
-          5-Min Demo Guide
+          Portal Tour
         </button>
 
         <button

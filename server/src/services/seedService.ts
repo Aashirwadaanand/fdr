@@ -248,7 +248,7 @@ export class SeedService {
           : crypto.createHash('sha256').update(`DOC_CONTENT_${fdrId}_${i}`).digest('hex');
 
         let extractedPayload: any = {
-          engine: 'Simulated OCR & Regex Extraction Engine (AICTE SIH Model)',
+          engine: 'Simulated OCR & Regex Extraction Engine (AICTE Regulatory Model)',
           isSimulated: true,
           confidenceScore: 0.95,
           extractedFields: {

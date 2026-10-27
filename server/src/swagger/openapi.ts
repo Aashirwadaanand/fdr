@@ -5,12 +5,11 @@ export const openApiSpec = {
     version: '1.0.0',
     description: `
 **Security Deposit / FDR Management Portal for AICTE Regulation Bureau**
-Problem Statement: SIH26265
 
 This portal provides centralized lifecycle tracking, automated compliance rule verification, 
 tri-level trust badges, cryptographic tamper-evident audit trails, and maker-checker release authorization.
 
-*Note: In accordance with hackathon guidelines, bank verification and OCR extractions operate via simulated adapters clearly labeled in all responses.*
+*Note: Bank verification and OCR extractions operate via simulated adapters clearly labeled in all responses.*
     `,
     contact: {
       name: 'AICTE Regulation Bureau Tech Support',

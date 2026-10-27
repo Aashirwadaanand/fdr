@@ -131,7 +131,7 @@ export class SimulatedOcrExtractionAdapter implements IExtractionAdapter {
     if (!fields.maturity_date) warnings.push('Maturity date could not be parsed');
 
     return {
-      engine: 'Simulated OCR & Regex Extraction Engine (AICTE SIH Model)',
+      engine: 'Simulated OCR & Regex Extraction Engine (AICTE Regulatory Model)',
       isSimulated: true,
       confidenceScore,
       extractedFields: fields,

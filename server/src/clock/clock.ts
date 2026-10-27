@@ -73,7 +73,7 @@ export class Clock {
 
   public reset(): string {
     this.offsetDays = 0;
-    // Default baseline date for the 2026 AICTE SIH demonstration
+    // Default baseline date for the AICTE portal demonstration
     this.fixedDate = '2026-10-27';
     this.persistState();
     return this.fixedDate;

@@ -98,9 +98,9 @@ export const DemoGuide: React.FC<DemoGuideProps> = ({ onNavigate }) => {
     <div>
       <div className="page-header">
         <div>
-          <h1 className="page-title">5-Minute Evaluator Click-Path & Demo Guide</h1>
+          <h1 className="page-title">5-Minute Portal Tour & Workflow Guide</h1>
           <p className="page-subtitle">
-            Follow this step-by-step evaluation workflow to test all required hackathon features end-to-end.
+            Follow this step-by-step regulatory workflow to experience all core system capabilities end-to-end.
           </p>
         </div>
       </div>

@@ -53,7 +53,7 @@ const MainPortal: React.FC = () => {
 
   return (
     <div>
-      {/* Persistent Hackathon Disclaimer Banner */}
+      {/* Simulation Environment Banner */}
       <DemoBanner onNavigateToGuide={() => handleNavigate('guide')} />
 
       <div className="app-container">
