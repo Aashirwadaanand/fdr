@@ -42,4 +42,4 @@ ENV DB_PATH=/app/data/fdr_sentinel.db
 EXPOSE 5000
 
 # Start server
-CMD ["node", "server/dist/server.js"]
+CMD ["node", "server/dist/index.js"]
