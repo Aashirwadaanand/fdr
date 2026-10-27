@@ -33,6 +33,18 @@ export function createApp(): Express {
   authService.setDatabase(db);
   auditLogger.setDatabase(db);
 
+  // Auto-seed initial synthetic dataset if database is empty
+  try {
+    const fdrCount = (db.prepare('SELECT COUNT(*) as cnt FROM fdrs').get() as { cnt: number })?.cnt || 0;
+    if (fdrCount === 0) {
+      const { SeedService } = require('./services/seedService');
+      SeedService.getInstance().seedAll(db);
+      console.log('🌱 Empty database detected: auto-seeded 200 synthetic FDRs with 30 deliberate errors.');
+    }
+  } catch (seedErr) {
+    console.error('Error during auto-seed check:', seedErr);
+  }
+
   // Middleware
   app.use(cors({
     origin: '*',
